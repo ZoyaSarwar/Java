@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Signup extends JFrame {
 
@@ -29,15 +31,15 @@ public class Signup extends JFrame {
         gbc.gridx = 1;
         formPanel.add(nameField, gbc);
 
-        // Add Father Name field
-        JLabel fatherNameLabel = new JLabel("Father Name:");
+        // Add Password field
+        JLabel passwordLabel = new JLabel("Password:");
         gbc.gridx = 0;
         gbc.gridy = 1;
-        formPanel.add(fatherNameLabel, gbc);
+        formPanel.add(passwordLabel, gbc);
 
-        JTextField fatherNameField = new JTextField(20);
+        JPasswordField passwordField = new JPasswordField(20);
         gbc.gridx = 1;
-        formPanel.add(fatherNameField, gbc);
+        formPanel.add(passwordField, gbc);
 
         // Add Email field
         JLabel emailLabel = new JLabel("Email:");
@@ -95,6 +97,43 @@ public class Signup extends JFrame {
         gbc.gridy = 6;
         gbc.anchor = GridBagConstraints.CENTER;
         formPanel.add(submitButton, gbc);
+
+        submitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Get user entered data 
+                String[] user = new String[6];
+                user[0] = nameField.getText();
+                user[1] = new String(passwordField.getPassword());
+                user[2] = emailField.getText();
+                user[3] = phoneField.getText();
+                user[4] = addressField.getText();
+                String gender; 
+                if (maleButton.isSelected()) {
+                    gender = maleButton.getText();
+                } else {
+                    gender = femaleButton.getText();
+                } 
+                user[5] = gender; 
+
+                Controller reg = new Controller();
+                String response =  reg.registration(user);
+                    JOptionPane.showMessageDialog(Signup.this,
+                        "Name: " + user[0] + "\n" +
+                        "Password: " + user[1] + "\n" +
+                        "Email: " + user[2] + "\n" +
+                        "Phone #: " + user[3] + "\n" +
+                        "Address " + user[4] + "\n" +
+                        "Gender: " + user[5] + "\n" +
+                        "Message: " + response,
+                        "Registration Successful", JOptionPane.INFORMATION_MESSAGE);
+
+                        
+                    new  Application();
+
+                
+            }
+        });
 
         // Add form panel to the frame
         add(formPanel, BorderLayout.CENTER);

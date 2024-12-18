@@ -63,7 +63,7 @@ public class LoginValidation extends JDialog{
                 String response = user.login(credentials);
 
                 // Validate Login
-                if (response == "Login Successful") {
+                if (response == "Login successful") {
                     new Application();
                     dispose(); 
                 } else {
