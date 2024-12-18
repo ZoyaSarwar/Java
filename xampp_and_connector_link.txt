@@ -1,0 +1,6 @@
+Connector for SQL server connectivity 
+https://dev.mysql.com/downloads/mysql/
+
+
+XAMMP download link
+https://www.apachefriends.org/download.html
