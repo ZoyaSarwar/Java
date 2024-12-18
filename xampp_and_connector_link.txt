@@ -1,5 +1,5 @@
 Connector for SQL server connectivity 
-https://dev.mysql.com/downloads/mysql/
+https://dev.mysql.com/downloads/connector/j/
 
 
 XAMMP download link
